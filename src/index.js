@@ -24,7 +24,7 @@ let help = `data: $val1,val2\\n
 log: @text\\n
 label: #label,label\\n
 unit: #label[%]\\n
-dots: #"--label\\n"`;
+dots: #--label\\n`;
 
 document.addEventListener("DOMContentLoaded", () => {
     let sidebar = EL.make('div', {
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
         class: 'container',
     });
 
-    plot = new SVPlot(container, { type: 'stack', dark: true });
+    plot = new SVPlot(container, { type: 'stack', /*dark: true*/ });
 
-    ui = new UI({ parent: sidebar, theme: 'dark noback', width: '100%' })
+    ui = new UI({ parent: sidebar, /*theme: 'dark noback',*/ width: '100%' })
         .addSelect('conn', 'Connection', ['Serial', 'BLE', 'WS'], connsel_h)
         .addButton('select', 'Select', select_h)
         .addSpace()

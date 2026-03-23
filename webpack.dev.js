@@ -51,7 +51,7 @@ module.exports = {
     devServer: {
         watchFiles: ['src/*.html'],
         static: path.resolve(__dirname, './dev'),
-        hot: true,
+        hot: false,
         open: true,
     },
 

@@ -5,6 +5,8 @@
 - WebSocket
 - BLE
 
+> [https://alexgyver.github.io/WebPlotter](https://alexgyver.github.io/WebPlotter)
+
 ## Формат пакетов
 ### Данные
 Префикс - `$`, разделитель - `,`, в конце - перенос строки

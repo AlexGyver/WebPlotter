@@ -6,8 +6,7 @@ body {
 
 body {
     display: flex;
-    background: #2D333B;
-    background: #1c1d22;
+    /* background: #1c1d22; */
 }
 
 .sidebar {
