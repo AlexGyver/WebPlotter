@@ -1,0 +1,22 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    background: #2D333B;
+    background: #1c1d22;
+}
+
+.sidebar {
+    width: 210px;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.container {
+    flex: 1;
+}
