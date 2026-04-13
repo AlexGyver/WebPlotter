@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .addLabel('name', 'Name', 'none')
         .addLabel('state', 'State', 'none')
         .addNumber('baud', 'Baudrate', 115200)
-        .addText('ws', 'IP:port:proto', '192.168.1.2:81:proto')
+        .addText('ws', 'IP:port', '192.168.1.2:81')
         .addButtons({ connect: ['Connect', conn_h], disconnect: ['Disconnect', disc_h] })
         .addSpace()
         .addArea('log', 'Log', help)
@@ -94,8 +94,8 @@ function conn_h() {
             break;
 
         case 'WS': {
-            const [ip, port, proto] = ui.ws.split(':');
-            ws.config({ ip, port, proto });
+            const [ip, port] = ui.ws.split(':');
+            ws.config({ ip, port });
             ws.open();
             localStorage.setItem('plot_ws', ui.ws);
         } break;
