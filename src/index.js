@@ -54,14 +54,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .addText('text', 'Send')
         .addButton('send', 'Send', send_h)
 
-    connsel_h();
-
     serial.onchange = onstate;
     ble.onchange = onstate;
     ws.onchange = onstate;
 
-    serial.onselect = onselect;
-    ble.onselect = onselect;
+    serial.onselect = name => {
+        if (ui.connText == 'Serial') ui.name = name;
+    }
+    ble.onselect = name => {
+        if (ui.connText == 'BLE') ui.name = name;
+    }
 
     serial.ontext = parse_h;
     ble.ontext = parse_h;
@@ -69,14 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let ls_ws = localStorage.getItem('plot_ws');
     if (ls_ws) ui.ws = ls_ws;
-});
 
-function onselect(name) {
-    switch (ui.connText) {
-        case 'Serial': ui.name = name; break;
-        case 'BLE': ui.name = name; break;
-    }
-}
+    let ls_conn = localStorage.getItem('plot_conn');
+    if (ls_conn) ui.conn = ls_conn;
+
+    connsel_h();
+});
 
 function onstate(state) {
     ui.state = state;
@@ -120,15 +120,23 @@ function connsel_h() {
     switch (ui.connText) {
         case 'Serial':
             ui.widget('baud').show();
+            ui.widget('select').show();
+            ui.widget('name').show();
+            ui.name = serial.getName();
+            break;
 
         case 'BLE':
             ui.widget('select').show();
             ui.widget('name').show();
+            ui.name = ble.getName();
             break;
+
         case 'WS':
             ui.widget('ws').show();
             break;
     }
+
+    localStorage.setItem('plot_conn', ui.conn);
 }
 
 function disc_h() {

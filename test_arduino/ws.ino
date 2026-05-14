@@ -1,9 +1,9 @@
 #include <Arduino.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 #include <WebSocketsServer.h>
 
-#define WIFI_SSID "AlexMain"
-#define WIFI_PASS "lolpass12345"
+#define WIFI_SSID ""
+#define WIFI_PASS ""
 
 WebSocketsServer ws(81, "", "esp");
 
@@ -39,15 +39,6 @@ void setup() {
 
                 ws.broadcastTXT(data, len);
                 break;
-
-            case WStype_BIN:
-                Serial.print("got bin: ");
-                while (len--) {
-                    Serial.print(*data++);
-                    Serial.print(',');
-                }
-                Serial.println();
-                break;
         }
     });
 }
@@ -55,14 +46,17 @@ void setup() {
 void loop() {
     ws.loop();
 
-    static uint32_t t;
-    static float x;
-    if (millis() - t >= 1000) {
-        t = millis();
+    static uint32_t tmr;
+
+    if (millis() - tmr >= 100) {
+        tmr = millis();
+
+        if (!random(100)) {
+            ws.broadcastTXT(String('@') + "log:" + millis());
+        }
+
+        static float x;
         x += PI / 20;
-        String s('$');
-        s += sin(x) * 10;
-        ws.broadcastTXT(s);
-        Serial.println(s);
+        ws.broadcastTXT(String('$') + (sin(x) * 50 + 50) + ',' + random(100));
     }
 }
