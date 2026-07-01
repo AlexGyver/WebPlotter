@@ -15,7 +15,7 @@ module.exports = {
 
     output: {
         filename: 'script.js',
-        path: path.resolve(__dirname, 'index'),
+        path: path.resolve(__dirname, 'docs'),
         clean: true,
         publicPath: '',
     },
@@ -72,7 +72,7 @@ module.exports = {
         }),
         new ReplaceHashInFileWebpackPlugin([
             {
-                dir: 'index',
+                dir: 'docs',
                 files: ['sw.js'],
                 rules: [
                     {
@@ -82,7 +82,7 @@ module.exports = {
                 ]
             },
             {
-                dir: 'index',
+                dir: 'docs',
                 files: ['manifest.json'],
                 rules: [
                     {

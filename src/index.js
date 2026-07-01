@@ -4,10 +4,11 @@ import SVPlot from '@alexgyver/svplot';
 import SerialJS from '@alexgyver/serial';
 import WebSocketJS from '@alexgyver/websocket';
 import BLEJS from '@alexgyver/ble';
+import { registerSW } from './registerSW';
 import './index.css'
 
-if ('serviceWorker' in navigator && typeof USE_SW !== 'undefined') {
-    navigator.serviceWorker.register('sw.js');
+if (USE_SW) {
+    registerSW();
 }
 
 /** @type {SVPlot} */
