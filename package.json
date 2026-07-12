@@ -15,9 +15,9 @@
   "author": "AlexGyver",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^5.108.3",
-    "webpack-cli": "^7.1.0",
-    "webpack-dev-server": "^5.2.5",
+    "webpack": "^5.108.4",
+    "webpack-cli": "^7.2.1",
+    "webpack-dev-server": "^6.0.0",
     "css-loader": "^7.1.4",
     "html-webpack-plugin": "^5.6.7",
     "copy-webpack-plugin": "^14.0.0",
@@ -33,7 +33,7 @@
     "@alexgyver/serial": "^1.0.11",
     "@alexgyver/websocket": "^1.0.7",
     "@alexgyver/component": "^2.1.5",
-    "@alexgyver/svplot": "^1.1.11",
+    "@alexgyver/svplot": "^1.2.0",
     "@alexgyver/ui": "^1.7.16"
   }
 }
